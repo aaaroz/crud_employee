@@ -1,9 +1,7 @@
+import 'package:crud_employee/components/button_component.dart';
+import 'package:crud_employee/constant/routes_navigation.dart';
 import 'package:crud_employee/theme/color.dart';
 import 'package:flutter/material.dart';
-
-import '../../components/button_component.dart';
-import '../auth/login_screen.dart';
-import '../auth/signup_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -80,12 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => const LoginScreen()),
-                        ),
-                      );
+                      Navigator.pushNamed(context, RoutesNavigation.loginView);
                     },
                   ),
                   const SizedBox(height: 18),
@@ -108,12 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: ((context) => const SignupScreen()),
-                          ),
-                        );
+                        Navigator.pushNamed(
+                            context, RoutesNavigation.signupView);
                       },
                     ),
                   ),

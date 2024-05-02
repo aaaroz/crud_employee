@@ -3,7 +3,6 @@ import 'package:crud_employee/components/text_field_component.dart';
 import 'package:crud_employee/constant/routes_navigation.dart';
 import 'package:crud_employee/screens/auth/models/login_model.dart';
 import 'package:crud_employee/theme/color.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
-    Provider.of<LoginModels>(context, listen: false);
+    Provider.of<LoginModels>(context, listen: false)
+        .isAuthorized(context: context);
     super.initState();
   }
 
@@ -122,7 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: primary500,
                         labelText: loginModels.isLoading
                             ? const Center(
-                                child: CircularProgressIndicator(),
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
                               )
                             : const Center(
                                 child: Text(
@@ -136,9 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            if (kDebugMode) {
-                              print(context);
-                            }
+                            loginModels.loginAccount(context: context);
                           }
                         },
                       ),

@@ -1,9 +1,7 @@
 import 'package:crud_employee/components/button_component.dart';
 import 'package:crud_employee/components/text_field_component.dart';
-import 'package:crud_employee/constant/routes_navigation.dart';
 import 'package:crud_employee/screens/auth/models/signup_model.dart';
 import 'package:crud_employee/theme/color.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -197,13 +195,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                 ),
                               ),
                         onPressed: () {
-                          // if (formKey.currentState!.validate()) {
-                          //   if (kDebugMode) {
-                          //     print(context);
-                          //   }
-                          // }
-                          Navigator.pushNamed(
-                              context, RoutesNavigation.verifyView);
+                          if (formKey.currentState!.validate()) {
+                            signupModels.registerAccount(context: context);
+                          }
                         },
                       ),
                       const SizedBox(height: 20),
@@ -228,25 +222,29 @@ class _SignupScreenState extends State<SignupScreen> {
                         ],
                       ),
                       const SizedBox(height: 50),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "By clicking Register, You agree to our",
-                            style: TextStyle(fontSize: 14, color: grey700),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Terms and Data Policy.",
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: primary500,
-                                  fontWeight: FontWeight.bold),
+                      SizedBox(
+                        width: 380,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "By clicking Register, You agree to our",
+                              style: TextStyle(fontSize: 14, color: grey700),
                             ),
-                          ),
-                        ],
+                            TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "Terms and Data Policy.",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: primary500,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   )

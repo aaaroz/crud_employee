@@ -5,6 +5,11 @@ import 'package:crud_employee/screens/auth/models/signup_model.dart';
 import 'package:crud_employee/screens/auth/models/verify_model.dart';
 import 'package:crud_employee/screens/auth/signup_screen.dart';
 import 'package:crud_employee/screens/auth/verify_screen.dart';
+import 'package:crud_employee/screens/dashboard/dashboard_screen.dart';
+import 'package:crud_employee/screens/dashboard/models/dashboard_model.dart';
+import 'package:crud_employee/screens/employees/list_employee_screen.dart';
+import 'package:crud_employee/screens/employees/models/list_employee_model.dart';
+import 'package:crud_employee/screens/home/home_screen.dart';
 import 'package:crud_employee/screens/splash/splash_screen.dart';
 import 'package:crud_employee/theme/color.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +34,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => VerifyModels(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DashboardModels(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ListEmployeeModels(),
         )
       ],
       child: MaterialApp(
@@ -37,9 +48,12 @@ class MyApp extends StatelessWidget {
         initialRoute: RoutesNavigation.splashView,
         routes: {
           RoutesNavigation.splashView: (context) => const SplashScreen(),
+          RoutesNavigation.homeView: (context) => const HomeScreen(),
           RoutesNavigation.loginView: (context) => const LoginScreen(),
           RoutesNavigation.signupView: (context) => const SignupScreen(),
-          RoutesNavigation.verifyView: (context) => const VerifyScreen()
+          RoutesNavigation.verifyView: (context) => const VerifyScreen(),
+          RoutesNavigation.dashboardView: (context) => const DashboardScreen(),
+          RoutesNavigation.listEmployeeView: (context) => const ListEmployee()
         },
       ),
     );
